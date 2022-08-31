@@ -1,4 +1,7 @@
 <h1>Angular Lifecycle</h1>
 <hr />
 
-<app-page1></app-page1>
+<button (click)="show = !show">{{ show ? "Hide" : "Show" }}</button>
+
+<!-- if show == false this component will be destroyed -->
+<app-page1 *ngIf="show"></app-page1>

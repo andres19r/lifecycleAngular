@@ -27,6 +27,8 @@ export class Page1Component
     AfterViewChecked,
     OnDestroy
 {
+  name: string = 'Andres';
+
   constructor() {
     console.log('constructor');
   }
@@ -61,4 +63,6 @@ export class Page1Component
   ngOnInit(): void {
     console.log('ngOnInit');
   }
+
+  save() {}
 }
