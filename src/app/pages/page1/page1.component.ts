@@ -10,6 +10,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-page1',
@@ -28,6 +29,8 @@ export class Page1Component
     OnDestroy
 {
   name: string = 'Andres';
+  seconds: number = 0;
+  timerSubscription!: Subscription;
 
   constructor() {
     console.log('constructor');
@@ -58,10 +61,15 @@ export class Page1Component
 
   ngOnDestroy(): void {
     console.log('ngOnDestroy');
+    this.timerSubscription.unsubscribe();
+    console.log('timer cleared');
   }
 
   ngOnInit(): void {
     console.log('ngOnInit');
+    this.timerSubscription = interval(1000).subscribe(i => {
+      this.seconds = i;
+    })
   }
 
   save() {}
